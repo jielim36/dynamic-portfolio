@@ -26,6 +26,7 @@ func NewMySQLDatabase(env *Env) (*gorm.DB, error) {
 	// Initialize Tables
 	db.AutoMigrate(&models.ProjectGroup{})
 	db.AutoMigrate(&models.Project{})
+	db.AutoMigrate(&models.ProjectImages{})
 
 	return db, nil
 }

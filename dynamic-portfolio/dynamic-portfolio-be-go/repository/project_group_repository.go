@@ -33,6 +33,10 @@ func (pg *ProjectGroupRepository) GetProjectGroupById(id uint) (models.ProjectGr
 
 func (pg *ProjectGroupRepository) GetProjectGroupsByUserId(user_id uint) ([]models.ProjectGroup, error){
 	var projectGroup []models.ProjectGroup
-	result := pg.DB.Preload("Projects").Where("user_id = ?", user_id).Find(&projectGroup)	
+	// result := pg.DB.Preload("Projects").Where("user_id = ?", user_id).Find(&projectGroup)	
+	result := pg.DB.
+		Preload("Projects.ProjectImages").
+		Where("user_id = ?", user_id).
+		Find(&projectGroup)
 	return projectGroup, result.Error
 }
