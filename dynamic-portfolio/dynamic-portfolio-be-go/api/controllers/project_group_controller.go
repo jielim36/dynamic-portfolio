@@ -63,7 +63,7 @@ func (p *ProjectGroupController) AddProjectGroup(c *gin.Context) {
 		return
 	}
 
-	_, err = p.ProjectGroupUsecase.Create(&projectGroup)
+	affectedRows, err := p.ProjectGroupUsecase.Create(&projectGroup)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, models.ErrorResponse{
 			Message: err.Error(),
@@ -73,7 +73,7 @@ func (p *ProjectGroupController) AddProjectGroup(c *gin.Context) {
 
 	c.JSON(http.StatusOK, models.SuccessResponse{
 		Message: "Add Project Group Successful",
-		Data: true,
+		Data: affectedRows,
 	})
 }
 
