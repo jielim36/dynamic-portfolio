@@ -1,0 +1,92 @@
+<!-- Button -->
+<button
+  type="button"
+  class="btn"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  <div class="plus-icon">
+    <svg
+      clip-rule="evenodd"
+      fill-rule="evenodd"
+      stroke-linejoin="round"
+      stroke-miterlimit="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
+        fill-rule="nonzero"
+      />
+    </svg>
+  </div>
+</button>
+
+<!-- Add Project Group Dialog -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">
+          Add Project Group
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <!-- Form -->
+      <div class="modal-body">
+        <form [formGroup]="projectGroupForm" (ngSubmit)="onSubmit()">
+          <!-- name Field -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Group Name</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  projectGroupForm.get('name')?.invalid &&
+                  projectGroupForm.get('name')?.touched
+              }"
+            />
+            <div
+              *ngIf="
+                projectGroupForm.get('name')?.invalid &&
+                projectGroupForm.get('name')?.touched
+              "
+              class="invalid-feedback"
+            >
+              <div *ngIf="projectGroupForm.get('name')?.errors?.['required']">
+                name is required.
+              </div>
+              <div *ngIf="projectGroupForm.get('name')?.errors?.['minlength']">
+                name must be at least 3 characters long.
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">
+          Save changes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

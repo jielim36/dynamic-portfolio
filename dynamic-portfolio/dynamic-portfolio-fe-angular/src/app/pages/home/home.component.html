@@ -1,31 +1,41 @@
-<ul class="nav nav-tabs">
-  <li *ngFor="let group of projectGroups" class="nav-item active">
-    <a
-      class="nav-link"
-      aria-current="page"
-      (click)="changeGroup(group.id)"
-      [class.active]="group.id === currentGroup?.id"
-    >
-      {{ group.name }}
-    </a>
-  </li>
-</ul>
+<div class="home-container">
+  <h1 class="page-title text-center">Projects</h1>
+  <div class="project-listing-container">
+    <ul class="nav nav-tabs">
+      <li *ngFor="let group of projectGroups" class="nav-item active">
+        <a
+          class="nav-link"
+          aria-current="page"
+          (click)="group.id !== undefined ? changeGroup(group.id) : null"
+          [class.active]="group.id === currentGroup?.id"
+        >
+          {{ group.name }}
+        </a>
+      </li>
+      <li class="">
+        <app-group-form></app-group-form>
+      </li>
+    </ul>
 
-<div class="container text-center p-3">
-  <div class="row row-cols-3 g-3">
-    <div *ngFor="let project of currentGroup?.projects" class="col">
-      <div class="card" style="width: 18rem">
-        <img
-          src="{{ project?.project_images?.[0]?.image_url }}"
-          class="card-img-top"
-          alt="..."
-        />
-        <div class="card-body">
-          <h5 class="card-title">{{ project.title }}</h5>
-          <p class="card-text">
-            {{ project.description }}
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+    <!-- Project Listing -->
+    <div class="row row-cols-2 g-3 justify-content-center mt-3">
+      <div
+        *ngFor="let project of currentGroup?.projects"
+        class="col d-flex justify-content-center"
+      >
+        <div class="card" style="width: 18rem">
+          <img
+            src="{{ project?.project_images?.[0]?.image_url }}"
+            class="card-img-top"
+            alt="..."
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">
+              {{ project.description }}
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
         </div>
       </div>
     </div>

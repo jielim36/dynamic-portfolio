@@ -3,13 +3,15 @@ import { ProjectGroup } from '../../models/projectGroup';
 import { ProjectService } from '../../services/project.service';
 import { HttpResponse } from '../../models/response';
 import { CommonModule } from '@angular/common';
+import { GroupFormComponent } from "../../components/group-form/group-form.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    GroupFormComponent
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -40,7 +42,6 @@ export class HomeComponent {
 
   changeGroup(groupId: number) {
     this.currentGroup = this.projectGroups.find((grp) => grp.id === groupId)
-
   }
 
 }

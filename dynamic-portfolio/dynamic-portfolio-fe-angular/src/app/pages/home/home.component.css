@@ -1,0 +1,25 @@
+.home-container {
+    padding: 10px;
+}
+
+.home-container .page-title{
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 55px;
+    color: orangered;
+}
+
+.nav-link {
+    cursor: pointer;
+    font-weight: bold;
+    color: #555555;
+}
+
+.nav-link.active {
+    color: orangered;
+}
+
+.project-listing-container {
+    margin: 0px auto;
+    max-width: 80%;
+}

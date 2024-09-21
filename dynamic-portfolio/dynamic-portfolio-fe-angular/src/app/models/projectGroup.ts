@@ -1,8 +1,8 @@
 import { Project } from "./project";
 
 export interface ProjectGroup {
-    id: number;
+    id?: number;
     name: string;
     user_id: number;
-    projects: Project[];
+    projects?: Project[];
 }

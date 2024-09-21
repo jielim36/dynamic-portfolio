@@ -1,0 +1,7 @@
+.plus-icon {
+    height: 100%;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

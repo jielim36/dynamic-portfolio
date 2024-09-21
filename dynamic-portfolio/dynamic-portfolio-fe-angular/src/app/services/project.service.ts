@@ -14,4 +14,8 @@ export class ProjectService {
   getProjectGroupsByUserId(userId: number) {
     return this.http.get<HttpResponse<ProjectGroup[]>>(`/groups/user/${userId}`)
   }
+
+  addProjectGroup(projectGroup: ProjectGroup) {
+    return this.http.post<HttpResponse<number>>("/groups", projectGroup)
+  }
 }
